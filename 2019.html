@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+	.c1{
+		font-family:serif;
+		font-size:medium;}
+	.c2{
+		font-family:serif;
+		font-size:small;}
+	.widget-title{
+		font-family: sans-serif;
+		font-size: large;}
+	.c3{
+		font-family: serif;
+		font-size: medium;}
+	.text-right{
+		font-family: serif;
+		font-size:small; }
+	.tagline{
+		font-family: serif;
+		font-size:small;}
+	.navbar-brand{
+		transform:translateX(-50%);
+		top:5px;
+		position:absolute;
+	}		
+
+
+
+
+</style>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	<title>Histogramme-TC par Région</title>
+
+	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+	
+	<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
+	<link rel="stylesheet" href="assets/css/main.css">
+	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	 <script type="text/javascript" src="googlechart.js"></script>
+
+</head>
+
+<body>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<a class="navbar-brand" href="index.html"><img src="assets/images/sgit.jfif" style="width: 80px; height: 80px"; ></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="index.html">Accueil</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cartes<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="carte.html">Carte Choroplète</a></li>
+							<li><a href="requete.html">Carte avec requêtes </a></li>  
+						</ul>	 
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Histogrammes <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="active"><a href="selon-region.html">Selon la région</a></li>
+							<li><a href="selon-age.html">Selon l'âge</a></li>							
+							<li><a href="selon-sexe.html">Selon le sexe</a></li>
+							<li><a href="selon-milieu.html">Selon le milieu</a></li>
+
+
+						</ul>
+					</li>
+				
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div> 
+	<!-- /.navbar -->
+
+	<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+		
+		<ol class="breadcrumb">
+			<li><a href="index.html">Accueil</a></li>
+			<li >Histogramme du Taux de Chômage de chaque région</li>
+			<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Choisissez l'année <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+			            <li ><a class="btn" href="2018.html">2018</a></li>
+			            <li class='active'><a class="btn" href="2019.html">2019</a></li>
+			            <li><a class="btn" href="2020.html">2020</a></li>
+			            <li><a class="btn" href="2021.html">2021</a></li>
+		</ol>
+        <div class="row">
+		
+		<h4 class="h-caption"><br>Veuillez mettre le curseur sur les batônnets pour avoir le taux de chômage de la région. </h4>
+			  
+     </div>
+		
+		<CENTER><div  id="chart_div"   style="width: 800px; height: 500px"></CENTER>
+		<script language="javascript">
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawAxisTickColors);
+
+function drawAxisTickColors() {
+      var data = google.visualization.arrayToDataTable([
+        ['Région', 'Taux de chômage'],
+        ['Guelmim-Oued Noun',20.8],
+        ['Marrakech-Safi', 7.0],
+        ['Casablanca-Settat', 10.1],
+        ['Rabat-Salé-Kénitra', 12.2],
+        ['Beni Mellal-Khénifra', 5.9],
+        ['Souss-Massa',12.0],
+        ['Draa-Tafilalet', 5.6],
+        ['Tanger-Tétouan-AL hociema', 8.0],
+        ['Laâyoune-Sakia El Hamra', 14.8],
+        ['Dakhla-Oued Eddahab', 8.5],
+        ['Oriental', 16.3],
+        ['Fes-Meknès', 10.0]
+      ]);
+
+
+      var options = {
+        title: 'Taux de chômage par région en 2019',
+        chartArea: {width: '40%'},
+        legend:{style:'red'},
+        hAxis: {
+          title: 'Taux de chômage en %',
+          minValue: 0,
+          textStyle: {
+            bold: true,
+            fontSize: 12,
+            color: '#4d4d4d'
+          },
+          titleTextStyle: {
+            bold: true,
+            fontSize: 12,
+            color: '#4d4d4d'
+          }
+        },
+        vAxis: {
+          title: 'Les régions',
+          textStyle: {
+            fontSize: 12,
+            bold: true,
+            color: '#4d4d4d',
+          },
+          titleTextStyle: {
+            fontSize: 12,
+            bold: true,
+            color: '#4d4d4d'
+          }
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+    
+
+    </script>
+		</div>
+
+	</div>	<!-- /container -->
+	
+
+	<footer id="footer" class="top-space">
+
+		<div class="footer1">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Membres du groupe </h3>
+						<div class="widget-body">
+							<p class="c1">GUENDOUR Majda <br>
+							<P class="c1">KABBA Oumaima <br>
+							<p class="c1">ZERROUK Marwa<br>	
+							</p>	
+						</div>
+					</div>
+
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Emails</h3>
+						<div class="widget-body">
+							
+								<a class="c2" href="mailto:#">guendourmajda@gmail.com</a><br>
+								<br>
+								<a class="c2" href="mailto:#">oumakb11@gmail.com</a><br>
+								<br>
+                                <a class="c2" href="mailto:#">marwazerrouk19@gmail.com</a><br>
+								
+							</p>	
+						</div>
+					</div>
+
+					<div class="col-md-5 widget">
+						<h3 class="widget-title">Remerciements</h3>
+						<div class="widget-body">
+							<p class="c3">Nous tenons à remercier chaleureusement notre cher Professeur Hajji Hicham de nous avoir accordé l'opportunité d'élaborer ce site. </p>
+							<p></p>
+						</div>
+					</div>
+
+				</div> 
+			</div>
+		</div>
+
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-6 widget">
+						<div class="widget-body">	
+						    <p class="simplenav">Institut Agronomique et Vétérinaire HASSAN II, Madinat Al Irfane,B.P.6202.RABAT-Maroc</p>
+						    	<a class="A" href="https://www.iav.ac.ma">Consulter le site web de l'Institut</a></p>	
+						</div>
+
+				</div> 
+			</div>
+		</div>
+	</footer>	
+		
+
+
+
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="assets/js/headroom.min.js"></script>
+	<script src="assets/js/jQuery.headroom.min.js"></script>
+	<script src="assets/js/template.js"></script>
+</body>
+</html>
