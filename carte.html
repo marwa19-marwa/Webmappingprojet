@@ -157,7 +157,7 @@
             var mymap = L.map('map').setView([29.939006, -6.886224], 5);
             
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                attribution: '&copy; <a href="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
             }).addTo(mymap);
 
             var geoJson =L.geoJson(chomage).addTo(mymap)
